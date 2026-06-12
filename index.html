@@ -139,6 +139,67 @@
   .wave-bar:nth-child(5){animation-delay:.15s}
   @keyframes wv{0%,100%{height:4px}50%{height:18px}}
 
+
+  /* ===== BIRTHDAY BOX ===== */
+  .bday-section { margin-top: 48px; text-align: center; }
+  .bday-locked {
+    background: rgba(255,255,255,0.07);
+    border: 1.5px dashed rgba(200,160,255,0.35);
+    border-radius: 20px; padding: 32px 28px;
+    backdrop-filter: blur(10px);
+    display: flex; flex-direction: column; align-items: center; gap: 12px;
+  }
+  .bday-locked .lock-icon { font-size: 2.8rem; animation: lockPulse 2s ease-in-out infinite; }
+  @keyframes lockPulse { 0%,100%{transform:scale(1);opacity:.7} 50%{transform:scale(1.12);opacity:1} }
+  .bday-locked p { color: rgba(220,180,255,0.6); font-size: 0.95rem; letter-spacing: 1px; }
+  .bday-locked .days-left { color: #c084fc; font-size: 1.1rem; font-weight: 700; }
+
+  .bday-gift {
+    background: linear-gradient(135deg, rgba(168,85,247,0.18), rgba(124,58,237,0.12));
+    border: 1.5px solid rgba(200,160,255,0.5);
+    border-radius: 24px; padding: 40px 32px;
+    backdrop-filter: blur(16px);
+    box-shadow: 0 0 60px rgba(168,85,247,0.3);
+    text-align: center; display: none;
+    animation: giftReveal 1s ease forwards;
+  }
+  @keyframes giftReveal {
+    0% { opacity:0; transform:scale(0.7) rotate(-3deg); }
+    60% { transform:scale(1.05) rotate(1deg); }
+    100% { opacity:1; transform:scale(1) rotate(0deg); }
+  }
+  .bday-gift .gift-emoji {
+    font-size: clamp(3rem,10vw,5rem);
+    display: block; margin-bottom: 16px;
+    animation: giftBounce 1.5s ease-in-out infinite;
+  }
+  @keyframes giftBounce { 0%,100%{transform:translateY(0) rotate(-5deg)} 50%{transform:translateY(-14px) rotate(5deg)} }
+  .bday-gift h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1.8rem,6vw,3rem);
+    color: #e8c8ff;
+    text-shadow: 0 0 20px rgba(168,85,247,0.8);
+    margin-bottom: 12px;
+  }
+  .bday-gift .bday-msg {
+    color: rgba(240,220,255,0.9);
+    font-size: clamp(1rem,2.5vw,1.15rem);
+    line-height: 2; margin-bottom: 24px;
+  }
+  .bday-gift .bday-label {
+    color: rgba(200,160,255,0.6); font-size: 0.85rem; letter-spacing: 2px;
+    margin-bottom: 8px; display: block;
+  }
+  .confetti-btn {
+    background: linear-gradient(135deg,#a855f7,#7c3aed);
+    border: none; border-radius: 14px; padding: 14px 32px;
+    color: #fff; font-size: 1.05rem; font-family: 'Tajawal',sans-serif;
+    cursor: pointer; margin-top: 8px;
+    box-shadow: 0 4px 20px rgba(168,85,247,0.5);
+    transition: transform 0.2s;
+  }
+  .confetti-btn:hover { transform: translateY(-3px); }
+
   @media(max-width:480px){.letter-card{padding:24px 18px}.login-box{padding:36px 24px}}
 </style>
 </head>
@@ -206,6 +267,33 @@
       <p>انا مش عايز منك اكتر من اننا نبقى سند لبعض.. وان كل واحد فينا يحاول عشان التاني ويحافظ على اللي بينا مهما كانت الظروف 💜 ولو الدنيا كلها اتغيرت واتبدلت نفسي يفضل في مكان صغير في قلبك مكتوب عليه ان في شخص كان دايما بيتمنى سعادتك ومستعد يفضل جنبك ويساندك ويحبك بكل صدق واخلاص طول عمره مهما حصل ومهما مرت الايام والسنين. 🌹✨💜</p>
     </div>
 
+
+    <!-- BIRTHDAY BOX -->
+    <div class="bday-section" id="bdaySection">
+      <!-- Locked state (default) -->
+      <div class="bday-locked" id="bdayLocked">
+        <span class="lock-icon">🎁🔒</span>
+        <p>هدية عيد ميلادك</p>
+        <p class="days-left" id="daysLeftText">متاحة يوم ١ أغسطس فقط 🎂</p>
+        <p style="color:rgba(200,160,255,0.4);font-size:0.8rem">الموقع بيتأكد من تاريخ اليوم</p>
+      </div>
+      <!-- Gift state (only on Aug 1) -->
+      <div class="bday-gift" id="bdayGift">
+        <span class="gift-emoji">🎂</span>
+        <h2>كل سنة وانتي طيبة 💜</h2>
+        <p class="bday-msg">
+          يا أجمل جميلة.. النهارده يومك 🎉<br>
+          وانا من كل قلبي بتمنالك سنة مليانة فرح وحب وضحك<br>
+          وكل أمنية في قلبك تتحقق ✨<br>
+          ربنا يخليكي وييسرلك كل حاجة بتتمنيها 💜<br>
+          عيد ميلاد سعيد يا أجمل بنوته في الدنيا 🌸
+        </p>
+        <span class="bday-label">🎁 هدية عيد ميلادك 🎁</span>
+        <br>
+        <button class="confetti-btn" onclick="launchConfetti()">🎊 افتحي هديتك 🎊</button>
+      </div>
+    </div>
+
     <div class="heart-btn-wrapper">
       <button class="heart-btn" id="heartBtn" onclick="burstHearts()" aria-label="قلب">🤍</button>
       <span class="heart-btn-label">اضغطي على القلب 💜</span>
@@ -235,6 +323,7 @@ function checkPassword() {
     document.getElementById('login-page').style.display = 'none';
     document.getElementById('main-page').style.display = 'block';
     startParticles();
+    checkBirthday();
     // Play audio after user interaction (required by browsers)
     const audio = document.getElementById('bg-audio');
     audio.volume = 1.0;
@@ -297,6 +386,53 @@ function animate() {
   if (particles.length > 0) requestAnimationFrame(animate);
   else { animating = false; ctx.clearRect(0,0,canvas.width,canvas.height); }
 }
+
+// ===== BIRTHDAY CHECK =====
+function checkBirthday() {
+  const now = new Date();
+  const month = now.getMonth() + 1; // 1-indexed
+  const day = now.getDate();
+  const isBirthday = (month === 8 && day === 1);
+
+  if (isBirthday) {
+    document.getElementById('bdayLocked').style.display = 'none';
+    document.getElementById('bdayGift').style.display = 'block';
+    // auto launch confetti after 1 second
+    setTimeout(launchConfetti, 1200);
+  } else {
+    // Show days remaining
+    const year = now.getFullYear();
+    let bday = new Date(year, 7, 1); // Aug 1 this year
+    if (now > bday) bday = new Date(year + 1, 7, 1);
+    const diff = Math.ceil((bday - now) / (1000 * 60 * 60 * 24));
+    document.getElementById('daysLeftText').textContent = 
+      `باقي ${diff} يوم على عيد ميلادها 🎂`;
+  }
+}
+
+// ===== CONFETTI =====
+function launchConfetti() {
+  const colors = ['💜','🤍','🎉','✨','🌸','🎊','💕','⭐','🎈'];
+  for (let i = 0; i < 80; i++) {
+    setTimeout(() => {
+      const p = {
+        x: Math.random() * window.innerWidth,
+        y: -20,
+        vx: (Math.random() - 0.5) * 4,
+        vy: 2 + Math.random() * 5,
+        life: 1,
+        decay: 0.008 + Math.random() * 0.01,
+        size: 20 + Math.random() * 20,
+        emoji: colors[Math.floor(Math.random() * colors.length)]
+      };
+      particles.push(p);
+      if (!animating) animate();
+    }, i * 30);
+  }
+}
+
+// call on load
+checkBirthday();
 </script>
 </body>
 </html>
