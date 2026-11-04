@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="dark">
-<title>إلى جني 💙</title>
+<title>بحبك 💙</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Tajawal:wght@400;700;800&family=Reem+Kufi:wght@400;700&family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg1:#050b24;--bg2:#0b2a6f;--card:rgba(255,255,255,.07);--line:rgba(120,170,255,.25);--txt:#eaf1ff;--soft:#9db8f2;--glow:#4da3ff;--pink:#ff7eb6;
@@ -99,19 +99,33 @@ html[data-t=neon] section{border-width:2px;box-shadow:0 0 22px rgba(0,229,255,.2
 html[data-t=gold] section{border-style:double;border-width:4px}
 html[data-t=sky] .msg,html[data-t=sky] .letter{text-shadow:none}
 html[data-t=dawn] .msg,html[data-t=gold] .msg,html[data-t=dawn] .letter,html[data-t=gold] .letter{font-size:24px}
+
+.hg{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.hi{text-align:center;cursor:pointer;font-size:17px}
+.hv{width:96px;margin:0 auto 6px;animation:hb 1.8s infinite;filter:drop-shadow(0 0 12px var(--glow))}
+#hh svg{filter:drop-shadow(0 0 18px var(--glow))}
+.bar{height:22px;border-radius:12px;background:rgba(255,255,255,.12);overflow:hidden;border:1px solid var(--line)}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--btn1),var(--btn2))}
+.pkh{font-size:50px;cursor:pointer;transition:transform .3s;user-select:none}
+#lh{touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+.letter{text-align:right;line-height:2.1;font-size:18px}
+.letter p{margin:0 0 20px}
+.letter p.lr{opacity:0;transform:translateY(18px);transition:opacity .9s,transform .9s}
+.letter p.lr.vis{opacity:1;transform:none}
+.letter .dv{text-align:center;color:var(--glow);margin:18px 0;letter-spacing:6px}
 </style>
 <script>(function(){var T=['night','dawn','ocean','sky','neon','gold'],l=-1,n;try{l=+localStorage.getItem('jt')}catch(e){}do{n=Math.floor(Math.random()*T.length)}while(n===l);try{localStorage.setItem('jt',n)}catch(e){}document.documentElement.setAttribute('data-t',T[n])})();</script>
 </head>
 <body>
-<div id="gate"><div class="heart" style="font-size:54px">💙</div><h1>جني</h1><p>🎧 البسي السماعات واضغطي للدخول</p><button id="enter">ادخلي 💙</button></div>
+<div id="gate"><div class="heart" style="font-size:54px">💙</div><h1>بحبك</h1><p>إلى جني 💙<br>🎧 البسي السماعات واضغطي للدخول</p><button id="enter">ادخلي 💙</button></div>
 <div class="stars" id="stars"></div>
 <main>
-<nav><a href="#home">البداية</a><a href="#words">كلام</a><a href="#shawarma">الشاورما</a><a href="#games">ألعاب</a><a href="#song">أغنيتك</a><a href="#letter">رسالة</a></nav>
+<nav><a href="#home">البداية</a><a href="#words">كلام</a><a href="#shawarma">الشاورما</a><a href="#games">ألعاب</a><a href="#song">أغنيتك</a><a href="#hearts">قلوب</a><a href="#letter">رسالة</a></nav>
 
 <div class="hero" id="home">
-<small>موقع صغير عملته مخصوص</small>
-<h1>جني</h1>
-<span class="heart">💙</span>
+<small>موقع اتعمل مخصوص لـ جني</small>
+<h1>بحبك</h1>
+<div class="heart" id="hh" style="display:block;width:96px;height:90px;margin:4px auto"></div>
 <p>لأن الأزرق أحلى لون… ولأنك أحلى حد</p>
 <button onclick="location.hash='words'">اضغطي هنا</button>
 </div>
@@ -156,6 +170,15 @@ html[data-t=dawn] .msg,html[data-t=gold] .msg,html[data-t=dawn] .letter,html[dat
 <div class="info"><span>اخدشي الكارت بصباعك</span><span>اتكشف: <b id="scn">0</b></span></div>
 <div id="scbox"><span id="scm"></span><canvas id="scv"></canvas></div>
 <div class="row"><button onclick="scNext()">كارت جديد 💙</button></div>
+<h3 style="margin-top:28px">٥) سؤال صغير 😊</h3>
+<div id="rq" style="position:relative;height:150px;text-align:center"><p style="font-size:19px;margin:0">هتبتسمي دلوقتي؟</p><button id="yes" style="position:absolute;left:10%;top:56px">أيوه 😊</button><button id="no" style="position:absolute;left:58%;top:56px">لأ 😒</button></div>
+<h3 style="margin-top:28px">٦) اختاري قلب 💝</h3>
+<div class="row" id="pk"></div>
+<div class="msg" id="pkm" style="min-height:80px;font-size:18px;transition:opacity .3s">اختاري أي قلب وشوفي إيه جواه</div>
+<h3 style="margin-top:28px">٧) مقياس الحب 💗</h3>
+<div class="bar"><i id="lb"></i></div>
+<div class="row"><button id="lh">اضغطي وفضلي ضاغطة 💗</button></div>
+<div class="msg" id="lm" style="min-height:50px;font-size:18px">اضغطي وفضلي ضاغطة</div>
 </section>
 
 <section id="song" style="text-align:center">
@@ -167,17 +190,33 @@ html[data-t=dawn] .msg,html[data-t=gold] .msg,html[data-t=dawn] .letter,html[dat
 <div class="row"><a href="https://www.youtube.com/results?search_query=Laufey+From+The+Start" target="_blank" rel="noopener" style="text-decoration:none"><button>شغلي الأغنية ▶</button></a></div>
 </section>
 
+<section id="hearts"><h2>معرض القلوب 💙</h2><div class="hg" id="hg"></div></section>
+
 <section id="letter">
-<h2>رسالة صغيرة 💌</h2>
+<h2>رسالة حب طويلة 💌</h2>
 <div class="letter">
-مش بعرف أقول كل حاجة بالكلام،<br>
-فقلت أعملك حاجة تبقى ليكي.<br>
-عمري ما شفتك غير مرة، بس كانت كفاية<br>
-أفتكر عيونك وصوتك كل مرة.<br>
-أتمنى أكون سبب ابتسامة صغيرة النهاردة 🌙<br><br>
-<span style="color:var(--soft)">— نيكس</span>
+<p><b>إلى جني،</b></p>
+<p>مش عارف أبدأ منين. أنا قعدت كتير أفكر أقولك إيه، وفي الآخر قلت أسيب قلبي يكتب. فلو لقيتي الكلام بسيط أو متلخبط، سامحيني، لأنه طالع من القلب مش من الورقة.</p>
+<p>أنا عرفتك من النت، يعني من ورا شاشة، كلام وضحك وأغاني. ولما شفتك مرة واحدة بس، حسيت إن الشاشة كانت مخبية حاجات حلوة كتير. عيونك كانت أحلى من أي صورة، وصوتك... صوتك ده حاجة لوحدها، حاجة بتخلي اليوم التقيل يبقى أخف.</p>
+<div class="dv">💙 ✦ 💙</div>
+<p>مش هقولك إني بحبك بصوت عالي، لأني حاسس إنك عارفة. إحنا الاتنين عارفين من غير ما نقول، بس أنا حبيت أكتبها مرة بالراحة وبوضوح: <b>بحبك</b>. بحبك بطريقة هادية، مش بتزعق ولا بتطلب حاجة. بحبك وخلاص.</p>
+<p>بحب فيكي حاجات كتير. بحب إنك بتحبي الأزرق، فبقى هو لوني المفضل كمان. بحب إنك بتحبي الشاورما، لأن ده خلاني أبتسم لما عرفت، وبقيت كل ما أشوف شاورما أفتكرك وأضحك لوحدي.</p>
+<p>وبحب أغنيتك، <b>From The Start</b>. أول ما عرفت إنها أغنيتك المفضلة سمعتها مرات كتير، وكل مرة كنت بحس إني قربت منك شوية. الأغاني حاجة غريبة، بتخلينا نحب ناس مش جنبنا بس صوتهم في ودننا.</p>
+<div class="dv">💙 ✦ 💙</div>
+<p>أنا لسه صغير، وعارف إن الدنيا قدامنا طويلة، وإن مش كل حاجة بتحصل بسرعة. وأنا مش مستعجل. مش عايز أضغط عليكي ولا أطلب منك حاجة. كل اللي عايزه إنك تعرفي إن فيه حد بيفكر فيكي بحب واحترام، وإنك مهمة عنده أوي.</p>
+<p>فيه أيام بحس فيها إني تايه، وبفقد الشغف في حاجات كنت بحبها. بس لما أفتكرك، بحس إن فيه حاجة حلوة لسه موجودة، وإن الدنيا لسه فيها ناس تستاهل نبتسم علشانها.</p>
+<p>أتمنى تفضلي دايمًا بالقوة والحلاوة دي، وتفضلي تضحكي من قلبك، وتحققي كل أحلامك الكبيرة والصغيرة. وأتمنى لو في يوم بقيت جنبك، أبقى سبب في فرحة مش حزن.</p>
+<div class="dv">💙 ✦ 💙</div>
+<p>لو يوم حسيتي بزعل، افتكري إن فيه حد هنا بيحبك وبيتمنالك الخير. ولو يوم حسيتي بفرح، نفسي أكون من أول الناس اللي تعرف، عشان أفرح معاكي.</p>
+<p>ولو اكتشفتي إن مشاعري دي مش ماشية مع مشاعرك، فأنا مش هزعل منك أبدًا، وهفضل أحترمك وأتمنالك كل خير، لأن حبي ليكي مش مشروط بحاجة.</p>
+<p>وعد مني أفضل صادق معاكي، وأحترمك، وأحافظ على الكلام الحلو اللي بيننا زي ما بحافظ على أغلى حاجة عندي.</p>
+<p>الموقع ده تفصيلة صغيرة، بس عملته بكل حب. كل لعبة فيه، وكل رسالة، وكل قلب، فيهم حاجة مني ليكي.</p>
+<div class="dv">💙 ✦ 💙</div>
+<p>وفي الآخر، شكرًا إنك موجودة. شكرًا على ضحكتك، وعلى صوتك، وعلى إنك خلتيني أحس إن الدنيا ممكن تبقى أحلى.</p>
+<p style="text-align:center;font-size:24px"><b>بحبك يا جني 💙</b></p>
+<p style="text-align:center;color:var(--soft)">— نيكس 🌙</p>
 </div>
-<div class="row"><button onclick="pop('وأنتِ أحلى حاجة في يومي 💙')">اضغطي لو عجبك</button></div>
+<div class="row"><button onclick="pop('وأنتِ أحلى حاجة في يومي 💙')">اضغطي لو عجبك 💙</button></div>
 </section>
 
 <footer>اتعمل بحب 💙 لجني</footer>
@@ -263,6 +302,32 @@ if(n/t>.4){done=true;cv.style.opacity=0;cv.style.pointerEvents='none';sv++;docum
 cv.onpointerdown=function(e){d=true;try{cv.setPointerCapture(e.pointerId)}catch(x){}sc(e)};cv.onpointermove=sc;cv.onpointerup=cv.onpointercancel=function(){d=false;chk()}}
 function scNext(){si2++;scInit()}
 scInit();
+/* hearts gallery */
+var HP='M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z';
+function hsvg(i,a,b,o,sp){return '<svg viewBox="-1 -1 34 32" width="100%" style="overflow:visible"><defs><linearGradient id="g'+i+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="'+a+'"/><stop offset="1" stop-color="'+b+'"/></linearGradient></defs><path d="'+HP+'" fill="'+(o?'none':'url(#g'+i+')')+'" stroke="'+(o?'url(#g'+i+')':'none')+'" stroke-width="'+(o?1.6:0)+'"/>'+(o?'':'<ellipse cx="9" cy="8" rx="3.4" ry="1.8" fill="#fff" opacity=".5" transform="rotate(-35 9 8)"/>')+(sp?'<text x="16" y="19" font-size="9" text-anchor="middle" fill="#fff">✦</text>':'')+'</svg>'}
+document.getElementById('hh').innerHTML=hsvg(0,'#9fd0ff','#2f7bff',0,0);
+var HG=[['#9fd0ff','#2f7bff',0,'عيونك'],['#ff9ed2','#ff4f9a',0,'ابتسامتك'],['#7cc0ff','#7cc0ff',1,'صوتك'],['#c3a6ff','#6d4bff',0,'أغنيتك'],['#7ff0ff','#0090c8',0,'جني'],['#ffe08a','#f5a623',0,'قلبي'],['#ff8a8a','#d6224a',1,'دايمًا'],['#ffffff','#7cc0ff',0,'إنتِ']];
+HG.forEach(function(h,i){var d=document.createElement('div');d.className='hi';d.innerHTML='<div class="hv" style="animation-delay:'+(i*.25)+'s">'+hsvg(i+1,h[0],h[1],h[2],i%2)+'</div><div>'+h[3]+'</div>';d.onclick=function(){pop('💙 '+h[3])};document.getElementById('hg').appendChild(d)});
+
+/* runaway no */
+var no=document.getElementById('no'),rq=document.getElementById('rq');
+function mvNo(e){if(e&&e.preventDefault)e.preventDefault();var w=Math.max(rq.clientWidth-no.offsetWidth,0),h=Math.max(rq.clientHeight-no.offsetHeight-44,0);no.style.left=Math.random()*w+'px';no.style.top=(44+Math.random()*h)+'px'}
+['pointerenter','pointerdown','click'].forEach(function(n){no.addEventListener(n,mvNo)});
+document.getElementById('yes').onclick=function(){pop('كدا يومي اتحلى 😍💙')};
+
+/* pick a heart */
+var PM=['أمنيتي: تفضلي مبتسمة دايمًا 😊','هدية من القلب: كل يوم حلو ليكي 🎁','سر صغير: بفرح لما بشوف رسالة منك 🌙','نصيحة قلبي: احلمي كبير، أنتِ تقدري ✨','كلمة حلوة: أنتِ أجمل من القمر لما يكون كامل 🌕','وعد: هفضل أحترمك وأحبك بهدوء 💙','ذكرى: يوم شفتك أول مرة كان من أحلى أيامي 💫','دعوة: ربنا يفرح قلبك دايمًا 🤲'];
+['💙','💖','💜','🤍','💛'].forEach(function(e){var d=document.createElement('div');d.className='pkh';d.textContent=e;d.onclick=function(){var m=document.getElementById('pkm');m.style.opacity=0;setTimeout(function(){m.textContent=PM[Math.floor(Math.random()*PM.length)];m.style.opacity=1},250);d.style.transform='scale(1.4) rotate(12deg)';setTimeout(function(){d.style.transform=''},300)};document.getElementById('pk').appendChild(d)});
+
+/* love meter */
+var lv=0,held=false,fired=false,lb=document.getElementById('lb'),lh=document.getElementById('lh'),lm=document.getElementById('lm');
+lh.addEventListener('pointerdown',function(e){e.preventDefault();held=true});
+['pointerup','pointerleave','pointercancel'].forEach(function(n){lh.addEventListener(n,function(){held=false})});
+lh.addEventListener('contextmenu',function(e){e.preventDefault()});
+setInterval(function(){lv=held?Math.min(100,lv+2.5):Math.max(0,lv-1.2);lb.style.width=lv+'%';lm.textContent=lv>=100?'وصل 100%! وده لسه قليل على اللي في قلبي 💙♾️':lv>60?'قربنا... كمّلي 💗':lv>20?'بيسخن 🔥':'اضغطي وفضلي ضاغطة';if(lv>=100&&!fired){fired=true;pop('مقياس الحب كسر الحدود 💙♾️')}if(lv<50)fired=false},80);
+
+/* letter reveal */
+if('IntersectionObserver' in window){var io2=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('vis');io2.unobserve(x.target)}})},{threshold:.2});document.querySelectorAll('.letter p').forEach(function(x){x.classList.add('lr');io2.observe(x)})}
 </script>
 </body>
 </html>
