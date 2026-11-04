@@ -73,6 +73,8 @@ button::after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%
 #gate h1{font-size:84px;margin:0;font-weight:800;color:#fff;text-shadow:0 0 40px #4da3ff}
 #gate p{color:#9db8f2;font-size:18px;margin:6px 0 26px}
 #gate button{font-size:20px;padding:16px 38px;animation:hb 1.6s infinite}
+#scbox{position:relative;height:140px;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;text-align:center;padding:14px;font-size:18px;line-height:1.8}
+#scv{position:absolute;inset:0;width:100%;height:100%;touch-action:none;transition:opacity .6s}
 </style>
 </head>
 <body>
@@ -125,6 +127,10 @@ button::after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%
 <div class="info"><span>أنتِ 💙 وأنا 🌯</span><span id="ttt-s">دورك</span></div>
 <div class="grid" id="ttt" style="grid-template-columns:repeat(3,1fr);max-width:260px;margin:auto"></div>
 <div class="row"><button onclick="tttInit()">لعبة جديدة 🔄</button></div>
+<h3 style="margin-top:28px">٤) اكشفي مشاعري 💌</h3>
+<div class="info"><span>اخدشي الكارت بصباعك</span><span>اتكشف: <b id="scn">0</b></span></div>
+<div id="scbox"><span id="scm"></span><canvas id="scv"></canvas></div>
+<div class="row"><button onclick="scNext()">كارت جديد 💙</button></div>
 </section>
 
 <section id="song" style="text-align:center">
@@ -220,6 +226,17 @@ var bg=document.getElementById('bgm'),gt=document.getElementById('gate');
 function opened(){gt.classList.add('out');mt=1;document.getElementById('mus').textContent='\u23f8 \u0625\u064a\u0642\u0627\u0641 \u0627\u0644\u0645\u0648\u0633\u064a\u0642\u0649'}
 document.getElementById('enter').addEventListener('click',function(){bg.currentTime=0;var r=bg.play();if(r&&r.then){r.then(opened,opened)}else opened()});
 try{var r0=bg.play();if(r0&&r0.then)r0.then(opened,function(){})}catch(e){}
+/* scratch cards */
+var sm=["بحبك أكتر مما أعرف أقول 💙","أنتِ أول حد أفتكره لما أسمع أغنية حلوة 🎶","قلبي بيهدى لما بفتكر صوتك 🌙","نفسي أبقى سبب ضحكتك كل يوم 😊","وجودك في حياتي هدية مش مستاهلها دنيا كاملة 🎁","لو الأمنيات بتتحقق، هتمنى أفضل جنبك ✨","مش محتاج سبب أحبك، إنتِ كفاية 🤍","اسمك بس بيخليني أبتسم 💫"],si2=0,sv=0;
+function scInit(){var box=document.getElementById('scbox'),cv=document.getElementById('scv'),w=box.clientWidth||300,h=box.clientHeight||140,done=false,d=false;
+document.getElementById('scm').textContent=sm[si2%sm.length];cv.style.opacity=1;cv.style.pointerEvents='auto';cv.width=w;cv.height=h;
+var c=cv.getContext('2d'),g=c.createLinearGradient(0,0,w,h);g.addColorStop(0,'#2f7bff');g.addColorStop(1,'#7cc0ff');c.fillStyle=g;c.fillRect(0,0,w,h);c.fillStyle='#fff';c.font='bold 20px Cairo,Tahoma,sans-serif';c.textAlign='center';c.fillText('اخدشي هنا ✨💙',w/2,h/2+7);c.globalCompositeOperation='destination-out';
+function sc(e){if(!d)return;var r=cv.getBoundingClientRect(),x=(e.clientX-r.left)*(w/r.width),y=(e.clientY-r.top)*(h/r.height);c.beginPath();c.arc(x,y,24,0,6.28);c.fill()}
+function chk(){if(done)return;var a=c.getImageData(0,0,w,h).data,n=0,t=0;for(var i=3;i<a.length;i+=64){t++;if(a[i]===0)n++}
+if(n/t>.4){done=true;cv.style.opacity=0;cv.style.pointerEvents='none';sv++;document.getElementById('scn').textContent=sv;if(sv===sm.length)pop('كشفتِ كل مشاعري 💙')}}
+cv.onpointerdown=function(e){d=true;try{cv.setPointerCapture(e.pointerId)}catch(x){}sc(e)};cv.onpointermove=sc;cv.onpointerup=cv.onpointercancel=function(){d=false;chk()}}
+function scNext(){si2++;scInit()}
+scInit();
 </script>
 </body>
 </html>
