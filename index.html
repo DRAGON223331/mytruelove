@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="dark">
 <title>إلى جني 💙</title>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Tajawal:wght@400;700;800&family=Reem+Kufi:wght@400;700&family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg1:#050b24;--bg2:#0b2a6f;--card:rgba(255,255,255,.07);--line:rgba(120,170,255,.25);--txt:#eaf1ff;--soft:#9db8f2;--glow:#4da3ff;--pink:#ff7eb6;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -75,7 +75,32 @@ button::after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%
 #gate button{font-size:20px;padding:16px 38px;animation:hb 1.6s infinite}
 #scbox{position:relative;height:140px;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;text-align:center;padding:14px;font-size:18px;line-height:1.8}
 #scv{position:absolute;inset:0;width:100%;height:100%;touch-action:none;transition:opacity .6s}
+
+:root{--ff:'Cairo';--navbg:rgba(5,11,36,.75);--btn1:#2f7bff;--btn2:#4da3ff;--btnt:#fff;--sh:rgba(77,163,255,.4);--star:#cfe2ff;--pop:#0b2a6f;--h1a:#7cc0ff;--h1b:#fff;--factbg:rgba(77,163,255,.12);--c1:#1b4bb0;--c2:#0d2a73;--arena:rgba(0,10,50,.5);--rad:22px;--h1s:92px}
+body{font-family:var(--ff),Tahoma,Arial,sans-serif;background-color:var(--bg1)}
+nav{background:var(--navbg)}
+button{background:linear-gradient(135deg,var(--btn1),var(--btn2));color:var(--btnt);box-shadow:0 6px 24px var(--sh)}
+.stars i{background:var(--star)}
+.hero h1{font-size:var(--h1s);background:linear-gradient(90deg,var(--h1a),var(--h1b),var(--h1a));background-size:200% auto;-webkit-background-clip:text;background-clip:text}
+.fact{background:var(--factbg)}
+.c{background:linear-gradient(135deg,var(--c1),var(--c2))}
+.c.on{background:#e7f1ff}.c.ok{background:#bfe0ff}
+#arena{background:var(--arena)}
+#pop{background:var(--pop)}
+section{border-radius:var(--rad)}
+#gate{background:radial-gradient(circle at 50% 40%,var(--bg2),var(--bg1) 70%)}
+#gate h1{color:var(--txt);font-size:var(--h1s)}
+html[data-t=dawn]{--bg1:#140a33;--bg2:#5a2d9c;--txt:#fff1fb;--soft:#e2b8ff;--glow:#ff9ed2;--line:rgba(255,160,220,.3);--card:rgba(255,255,255,.09);--ff:'Aref Ruqaa';--navbg:rgba(20,10,51,.75);--btn1:#8a5cff;--btn2:#ff7eb6;--sh:rgba(255,126,182,.45);--star:#ffd1ec;--pop:#3b1a73;--h1a:#ffb3dd;--h1b:#fff;--factbg:rgba(255,126,182,.14);--c1:#7a4bd8;--c2:#c04a9a;--arena:rgba(40,10,70,.5);--rad:34px}
+html[data-t=ocean]{--bg1:#021a2e;--bg2:#0a6a8f;--txt:#e6fbff;--soft:#8fdcf0;--glow:#3de0ff;--line:rgba(90,220,255,.3);--ff:'Tajawal';--navbg:rgba(2,26,46,.75);--btn1:#0090c8;--btn2:#3de0ff;--sh:rgba(61,224,255,.4);--star:#b8f3ff;--pop:#06506f;--h1a:#3de0ff;--h1b:#fff;--factbg:rgba(61,224,255,.12);--c1:#0a7ca8;--c2:#044a6b;--arena:rgba(0,40,70,.5);--rad:16px;--h1s:100px}
+html[data-t=sky]{--bg1:#eaf4ff;--bg2:#a9d2ff;--txt:#0b2a6f;--soft:#3b5fa5;--glow:#4da3ff;--line:rgba(30,90,200,.28);--card:rgba(255,255,255,.7);--navbg:rgba(255,255,255,.8);--btn1:#1d6bff;--btn2:#5aaeff;--sh:rgba(29,107,255,.35);--star:#5aa0ff;--pop:#ffffff;--h1a:#1d5fd6;--h1b:#0b2a6f;--factbg:rgba(47,123,255,.12);--c1:#5aa9ff;--c2:#2f7bff;--arena:rgba(255,255,255,.55);--rad:28px}
+html[data-t=neon]{--bg1:#02020a;--bg2:#1b0042;--txt:#f0f6ff;--soft:#8fb3ff;--glow:#00e5ff;--line:rgba(0,229,255,.45);--card:rgba(10,10,40,.6);--ff:'Reem Kufi';--navbg:rgba(2,2,10,.8);--btn1:#00e5ff;--btn2:#ff2bd6;--btnt:#02020a;--sh:rgba(255,43,214,.5);--star:#00e5ff;--pop:#14003a;--h1a:#00e5ff;--h1b:#ff2bd6;--factbg:rgba(0,229,255,.1);--c1:#00a8c4;--c2:#7a00b3;--arena:rgba(0,0,20,.7);--rad:6px;--h1s:80px}
+html[data-t=gold]{--bg1:#070d28;--bg2:#17336f;--txt:#fff7e6;--soft:#e9cf99;--glow:#f5c26b;--line:rgba(245,194,107,.4);--card:rgba(255,255,255,.06);--ff:'Aref Ruqaa';--navbg:rgba(7,13,40,.8);--btn1:#e9a93a;--btn2:#ffe08a;--btnt:#3a2600;--sh:rgba(245,194,107,.4);--star:#ffe7ae;--pop:#17336f;--h1a:#f5c26b;--h1b:#fff;--factbg:rgba(245,194,107,.12);--c1:#1f4a9a;--c2:#0c2a63;--arena:rgba(5,15,50,.55);--rad:40px;--h1s:104px}
+html[data-t=neon] section{border-width:2px;box-shadow:0 0 22px rgba(0,229,255,.25)}
+html[data-t=gold] section{border-style:double;border-width:4px}
+html[data-t=sky] .msg,html[data-t=sky] .letter{text-shadow:none}
+html[data-t=dawn] .msg,html[data-t=gold] .msg,html[data-t=dawn] .letter,html[data-t=gold] .letter{font-size:24px}
 </style>
+<script>(function(){var T=['night','dawn','ocean','sky','neon','gold'],l=-1,n;try{l=+localStorage.getItem('jt')}catch(e){}do{n=Math.floor(Math.random()*T.length)}while(n===l);try{localStorage.setItem('jt',n)}catch(e){}document.documentElement.setAttribute('data-t',T[n])})();</script>
 </head>
 <body>
 <div id="gate"><div class="heart" style="font-size:54px">💙</div><h1>جني</h1><p>🎧 البسي السماعات واضغطي للدخول</p><button id="enter">ادخلي 💙</button></div>
@@ -157,6 +182,7 @@ button::after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%
 
 <footer>اتعمل بحب 💙 لجني</footer>
 </main>
+<script>(function(){var mn=document.querySelector('main'),L=document.getElementById('letter'),a=[].filter.call(mn.children,function(e){return e.tagName==='SECTION'&&e!==L});for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t}a.forEach(function(x){mn.insertBefore(x,L)})})();</script>
 <button id="mus" onclick="toggleMusic()" style="position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:8;padding:12px 18px">🎵 شغّلي الموسيقى</button>
 <audio id="bgm" src="song.mp3" loop preload="auto"></audio>
 <div id="pop"></div>
@@ -169,7 +195,7 @@ var msgs=["عيونك حلوة لدرجة إني فاكرها لحد دلوقت�
 var mi=-1,m=document.getElementById('msg');
 var ty=null;
 function nextMsg(){mi=(mi+1)%msgs.length;clearInterval(ty);m.textContent='';var t=msgs[mi],k=0;ty=setInterval(function(){m.textContent=t.slice(0,++k);if(k>=t.length)clearInterval(ty)},45)}
-nextMsg();
+mi=Math.floor(Math.random()*msgs.length)-1;nextMsg();
 
 var sw=["ريحتها وصلت 😍","أحلى شاورما في الدنيا ليكي 🌯","زودت ثومية 🧄","بالبطاطس كمان 🍟","شاورما + جني = سعادة 💙"],si=0;
 function shw(){document.getElementById('shwt').textContent=sw[si++%sw.length];var e=document.getElementById('shw');e.style.transform='scale(1.4) rotate(15deg)';setTimeout(function(){e.style.transform=''},200)}
@@ -216,7 +242,7 @@ if(tb.every(Boolean)){tdone=true;st.textContent='تعادل 🤝'}}
 tttInit();
 
 /* animations */
-var hs=['💙','🤍','✨','💫','🌟','💖'];
+var HSS={night:['💙','🤍','✨','💫','🌟'],dawn:['🌸','💖','🦋','✨','💜'],ocean:['🐚','💧','🌊','🐠','💙'],sky:['☁️','🕊️','💙','🎈','✨'],neon:['💎','⚡','💙','💗','✨'],gold:['⭐','🌙','👑','💛','✨']},hs=HSS[document.documentElement.getAttribute('data-t')]||HSS.night;
 setInterval(function(){if(document.hidden)return;var h=document.createElement('div');h.className='fh';h.textContent=hs[Math.floor(Math.random()*hs.length)];h.style.left=Math.random()*95+'%';h.style.fontSize=(14+Math.random()*20)+'px';h.style.animationDuration=(7+Math.random()*6)+'s';document.body.appendChild(h);setTimeout(function(){h.remove()},13000)},900);
 document.addEventListener('pointerdown',function(e){for(var i=0;i<6;i++){var p=document.createElement('div');p.className='sp';p.textContent=['✨','💙','⭐'][i%3];p.style.left=e.clientX+'px';p.style.top=e.clientY+'px';var a=Math.random()*6.28,d=30+Math.random()*50;p.style.setProperty('--dx',Math.cos(a)*d+'px');p.style.setProperty('--dy',Math.sin(a)*d+'px');document.body.appendChild(p);setTimeout(function(q){q.remove()},900,p)}});
 setInterval(function(){if(document.hidden)return;var e=document.createElement('div');e.className='shoot';e.style.top=Math.random()*40+'%';document.body.appendChild(e);setTimeout(function(){e.remove()},1500)},6000);
