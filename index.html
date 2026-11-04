@@ -47,6 +47,26 @@ h2{margin:0 0 14px;font-size:24px}
 footer{text-align:center;color:var(--soft);margin-top:36px}
 #pop{position:fixed;left:50%;top:40%;transform:translate(-50%,-50%) scale(0);z-index:9;background:#0b2a6f;border:1px solid var(--glow);padding:22px 28px;border-radius:20px;text-align:center;font-size:20px;transition:transform .3s;box-shadow:0 0 50px var(--glow);max-width:85%}
 #pop.show{transform:translate(-50%,-50%) scale(1)}
+
+section{opacity:1;transition:opacity .9s,transform .9s}
+section.rv{opacity:0;transform:translateY(40px)}
+section.rv.vis{opacity:1;transform:none}
+.hero h1{animation:fl8 5s ease-in-out infinite,sh 4s linear infinite;background-size:200% auto}
+@keyframes fl8{50%{transform:translateY(-10px)}}
+@keyframes sh{to{background-position:200% center}}
+.fh{position:fixed;bottom:-40px;z-index:0;pointer-events:none;animation:up linear forwards;opacity:.7}
+@keyframes up{to{transform:translateY(-115vh) rotate(25deg);opacity:0}}
+.sp{position:fixed;z-index:20;pointer-events:none;font-size:22px;animation:spk .8s ease-out forwards}
+@keyframes spk{to{transform:translate(var(--dx),var(--dy)) scale(.2);opacity:0}}
+button{position:relative;overflow:hidden}
+button::after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);animation:shn 3s infinite}
+@keyframes shn{to{left:140%}}
+.fact{transition:transform .25s}.fact:hover,.fact:active{transform:translateY(-6px) scale(1.05)}
+.fact b{display:inline-block;animation:hb 2s infinite}
+.shoot{position:fixed;top:10%;right:-10%;width:120px;height:2px;background:linear-gradient(90deg,#fff,transparent);z-index:0;transform:rotate(-30deg);animation:sht 1.4s ease-out forwards;pointer-events:none}
+@keyframes sht{to{transform:translate(-120vw,60vh) rotate(-30deg);opacity:0}}
+.c:active{transform:scale(.92)}
+.win{animation:hb .6s 3}
 </style>
 </head>
 <body>
@@ -94,6 +114,10 @@ footer{text-align:center;color:var(--soft);margin-top:36px}
 <div class="info"><span>نقاط: <b id="sc">0</b></span><span>الوقت: <b id="tm">20</b></span></div>
 <div id="arena"></div>
 <div class="row"><button onclick="startCatch()">ابدأ ▶</button></div>
+<h3 style="margin-top:28px">٣) إكس أو بالقلوب</h3>
+<div class="info"><span>أنتِ 💙 وأنا 🌯</span><span id="ttt-s">دورك</span></div>
+<div class="grid" id="ttt" style="grid-template-columns:repeat(3,1fr);max-width:260px;margin:auto"></div>
+<div class="row"><button onclick="tttInit()">لعبة جديدة 🔄</button></div>
 </section>
 
 <section id="song" style="text-align:center">
@@ -128,9 +152,10 @@ footer{text-align:center;color:var(--soft);margin-top:36px}
 var st=document.getElementById('stars');
 for(var i=0;i<60;i++){var s=document.createElement('i');s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.animationDelay=Math.random()*3+'s';st.appendChild(s)}
 
-var msgs=["عيونك حلوة لدرجة إني فاكرها لحد دلوقتي 👀💙","صوتك من أحلى الحاجات اللي سمعتها في حياتي 🎧","لو اللون الأزرق ليه ملامح، هتبقى ملامحك 💙","يومي بيبقى أحسن لما أفتكرك 🌙","ابتسامتك تستاهل أحلى الدنيا ✨","أنتِ حلوة أوي، وإنتِ مش واخدة بالك بجد 🌹","نجمة وسط السما، وأنا بس بتفرج 🌟"];
+var msgs=["عيونك حلوة لدرجة إني فاكرها لحد دلوقتي 👀💙","صوتك من أحلى الحاجات اللي سمعتها في حياتي 🎧","لو اللون الأزرق ليه ملامح، هتبقى ملامحك 💙","يومي بيبقى أحسن لما أفتكرك 🌙","ابتسامتك تستاهل أحلى الدنيا ✨","أنتِ حلوة أوي، وإنتِ مش واخدة بالك بجد 🌹","نجمة وسط السما، وأنا بس بتفرج 🌟","كل ما اسمك يجي في بالي، قلبي يبتسم 💙","بحاول أكتب كلام يليق بيكي، بس أنتِ أجمل من أي كلمة 🌷","نفسي أسمع صوتك كل يوم قبل ما أنام 🎶","وأنا بسمع أغنيتك بفتكرك، وبحس الدنيا هادية 🎧","لو كل الناس حلوين زيك، الدنيا كانت جنة 🌸","أنتِ الحاجة الحلوة اللي حصلت لي من غير ما أستناها 💫","الشاورما حلوة، بس إنتِ أحلى منها 🌯😂💙","عمري ما حسيت بالراحة مع حد زي ما بحس مع كلامك 🤍","مهما كان يومك تقيل، افتكري إن فيه واحد بيفتكرك بحب 🌙","أنتِ مش بس حلوة، أنتِ مميزة بشكل مش طبيعي ✨","لو القمر شافك هيغير منك 🌕💙","كل حاجة فيكي بتخليني أبتسم من غير سبب 😊","وعد مني أفضل أحاول أبقى حد يستاهلك 💙"];
 var mi=-1,m=document.getElementById('msg');
-function nextMsg(){mi=(mi+1)%msgs.length;m.style.opacity=0;setTimeout(function(){m.textContent=msgs[mi];m.style.opacity=1},300)}
+var ty=null;
+function nextMsg(){mi=(mi+1)%msgs.length;clearInterval(ty);m.textContent='';var t=msgs[mi],k=0;ty=setInterval(function(){m.textContent=t.slice(0,++k);if(k>=t.length)clearInterval(ty)},45)}
 nextMsg();
 
 var sw=["ريحتها وصلت 😍","أحلى شاورما في الدنيا ليكي 🌯","زودت ثومية 🧄","بالبطاطس كمان 🍟","شاورما + جني = سعادة 💙"],si=0;
@@ -165,6 +190,28 @@ function autoStart(e){if(e&&e.target&&e.target.closest&&e.target.closest('#mus')
 function off(){['pointerdown','touchend','keydown','click'].forEach(function(n){document.removeEventListener(n,autoStart,true)})}
 ['pointerdown','touchend','keydown','click'].forEach(function(n){document.addEventListener(n,autoStart,true)});
 function toggleMusic(){var a=document.getElementById('bgm'),b=document.getElementById('mus');if(a.paused){a.play();mt=1;b.textContent='\u23f8 \u0625\u064a\u0642\u0627\u0641 \u0627\u0644\u0645\u0648\u0633\u064a\u0642\u0649'}else{a.pause();mt=null;b.textContent='\uD83C\uDFB5 \u0634\u063a\u0651\u0644\u064a \u0627\u0644\u0645\u0648\u0633\u064a\u0642\u0649'}}
+/* tic tac toe */
+var tb,tdone,tg=document.getElementById('ttt'),tl=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+function tw(b,x){return tl.some(function(l){return l.every(function(i){return b[i]===x})})}
+function tdraw(){[].forEach.call(tg.children,function(c,i){c.textContent=tb[i]||''})}
+function tttInit(){tb=Array(9).fill(null);tdone=false;tg.innerHTML='';document.getElementById('ttt-s').textContent='دورك';for(var i=0;i<9;i++){(function(i){var d=document.createElement('div');d.className='c on';d.style.color='#000';d.onclick=function(){tp(i)};tg.appendChild(d)})(i)}}
+function tfind(x){for(var i=0;i<9;i++){if(!tb[i]){tb[i]=x;var w=tw(tb,x);tb[i]=null;if(w)return i}}return -1}
+function tp(i){if(tdone||tb[i])return;tb[i]='💙';tdraw();var st=document.getElementById('ttt-s');
+if(tw(tb,'💙')){tdone=true;st.textContent='كسبتِ! 💙';pop('كسبتِ! زي ما كسبتي قلبي 💙');return}
+if(tb.every(Boolean)){tdone=true;st.textContent='تعادل 🤝';return}
+var j=tfind('🌯');if(j<0)j=tfind('💙');if(j<0&&!tb[4])j=4;if(j<0){var f=[];tb.forEach(function(v,k){if(!v)f.push(k)});j=f[Math.floor(Math.random()*f.length)]}
+tb[j]='🌯';tdraw();
+if(tw(tb,'🌯')){tdone=true;st.textContent='الشاورما كسبت 😂';return}
+if(tb.every(Boolean)){tdone=true;st.textContent='تعادل 🤝'}}
+tttInit();
+
+/* animations */
+var hs=['💙','🤍','✨','💫','🌟','💖'];
+setInterval(function(){if(document.hidden)return;var h=document.createElement('div');h.className='fh';h.textContent=hs[Math.floor(Math.random()*hs.length)];h.style.left=Math.random()*95+'%';h.style.fontSize=(14+Math.random()*20)+'px';h.style.animationDuration=(7+Math.random()*6)+'s';document.body.appendChild(h);setTimeout(function(){h.remove()},13000)},900);
+document.addEventListener('pointerdown',function(e){for(var i=0;i<6;i++){var p=document.createElement('div');p.className='sp';p.textContent=['✨','💙','⭐'][i%3];p.style.left=e.clientX+'px';p.style.top=e.clientY+'px';var a=Math.random()*6.28,d=30+Math.random()*50;p.style.setProperty('--dx',Math.cos(a)*d+'px');p.style.setProperty('--dy',Math.sin(a)*d+'px');document.body.appendChild(p);setTimeout(function(q){q.remove()},900,p)}});
+setInterval(function(){if(document.hidden)return;var e=document.createElement('div');e.className='shoot';e.style.top=Math.random()*40+'%';document.body.appendChild(e);setTimeout(function(){e.remove()},1500)},6000);
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('vis');io.unobserve(x.target)}})},{threshold:.12});
+document.querySelectorAll('section').forEach(function(x){x.classList.add('rv');io.observe(x)})}
 </script>
 </body>
 </html>
