@@ -16,8 +16,9 @@ h1{margin:0;font-size:clamp(32px,9vw,60px);line-height:1.6}
 <audio id="a" src="goodbye.mp3" loop preload="auto"></audio>
 <script>
 var a=document.getElementById('a');
-function go(){if(!a.paused)return;var r=a.play();if(r&&r.catch)r.catch(function(){})}
-go();
+function start(){var r=a.play();if(r&&r.catch)r.catch(function(){})}
+function go(){if(a.paused){a.muted=false;var r=a.play();if(r&&r.catch)r.catch(function(){a.muted=true;start()})}else if(a.muted){a.muted=false}}
+a.muted=false;var p0=a.play();if(p0&&p0.catch)p0.catch(function(){a.muted=true;start()});
 ['click','touchend','pointerup','keydown'].forEach(function(n){document.addEventListener(n,go)});
 </script>
 </body>
