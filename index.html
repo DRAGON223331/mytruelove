@@ -121,6 +121,7 @@ footer{text-align:center;color:var(--soft);margin-top:36px}
 <footer>اتعمل بحب 💙 لجني</footer>
 </main>
 <button id="mus" onclick="toggleMusic()" style="position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:8;padding:12px 18px">🎵 شغّلي الموسيقى</button>
+<audio id="bgm" src="song.mp3" loop preload="auto"></audio>
 <div id="pop"></div>
 
 <script>
@@ -163,6 +164,7 @@ ac.resume();master.gain.value=.8;bar();mt=setInterval(bar,4000);b.textContent='�
 function autoStart(e){if(e&&e.target&&e.target.closest&&e.target.closest('#mus')){off();return}off();if(!mt)toggleMusic()}
 function off(){['pointerdown','touchend','keydown','click'].forEach(function(n){document.removeEventListener(n,autoStart,true)})}
 ['pointerdown','touchend','keydown','click'].forEach(function(n){document.addEventListener(n,autoStart,true)});
+function toggleMusic(){var a=document.getElementById('bgm'),b=document.getElementById('mus');if(a.paused){a.play();mt=1;b.textContent='\u23f8 \u0625\u064a\u0642\u0627\u0641 \u0627\u0644\u0645\u0648\u0633\u064a\u0642\u0649'}else{a.pause();mt=null;b.textContent='\uD83C\uDFB5 \u0634\u063a\u0651\u0644\u064a \u0627\u0644\u0645\u0648\u0633\u064a\u0642\u0649'}}
 </script>
 </body>
 </html>
